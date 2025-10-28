@@ -146,5 +146,48 @@ Per-user account to track share holdings.
 
 ---
 
+## 💵 Fixed-Point Arithmetic
+
+All USDC values and share quantities use **6-decimal fixed-point math**.
+
+- `FP_SCALER = 1_000_000`
+- `1 USDC = 1,000,000`
+- Prices and values expressed in milli-units for high precision
+
+---
+
+## 💸 Fee Handling
+
+- Fee = `(trade_cost × fee_bps) / 10,000`
+- Total user payment = `trade_cost + fee`
+- Fees routed to treasury account (if defined)
+- Applies to both `buy` and `sell` instructions
+
+---
+
+## 🔐 Security Features
+
+### 🛡️ Authorization
+
+- Only market authority can perform admin actions
+- Settlement can be performed by authority or designated oracle
+- Users can only update their own positions
+
+### 🧪 Safety Checks
+
+- Market can be paused to halt trading
+- Trading deadline enforced strictly
+- Grace period must pass before settlement
+- Slippage protection on all trades
+- Overflow-resistant math throughout
+
+### ✅ Borrow Checker Safety
+
+- Ordered borrows to prevent runtime errors
+- Snapshot pattern used for CPIs
+- Avoids mixed mutable/immutable borrows
+
+---
+
 
 ---

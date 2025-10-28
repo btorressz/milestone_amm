@@ -101,4 +101,11 @@ Claim winnings by redeeming shares 1:1 for USDC after settlement.
 
 ---
 
+## 🔧 Admin Functions
+
+- `admin_set_paused`: Pause or unpause trading activity
+- `admin_update_params`: Update core market parameters (e.g. fees, limits, deadlines)
+
+---
+
 ---

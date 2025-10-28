@@ -62,4 +62,43 @@ This program implements a prediction market where traders can:
 
 ---
 
+## 🛠️ Instructions
+
+### `init_market`
+
+Initialize a new prediction market.  
+**Params**: Market authority, liquidity, deadline, fees, etc.
+
+---
+
+### `seed_liquidity`
+
+Deposit USDC into market vault (authority only).
+
+---
+
+### `buy`
+
+Buy shares on **Hit** or **Miss** side with USDC.
+
+---
+
+### `sell`
+
+Sell shares back to the AMM to receive USDC (subject to fees).
+
+---
+
+### `settle_market`
+
+Resolve the market outcome to **Hit** or **Miss** (authority or oracle only).
+
+---
+
+### `redeem`
+
+Claim winnings by redeeming shares 1:1 for USDC after settlement.
+
+---
+
 ---

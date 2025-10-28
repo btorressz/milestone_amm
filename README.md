@@ -40,4 +40,26 @@ This program implements a prediction market where traders can:
 - **Settlement**: Authority or oracle resolves market outcome
 - **Redemption**: Winning side redeems shares for 1:1 USDC
 
+
+## 🧮 Market Parameters
+
+### Core Parameters
+
+- `b_fp`: Liquidity parameter (e.g., 10,000 to 1,000,000,000,000 in fixed-point)
+- `fee_bps`: Trading fee (0–10,000 = 0–100%)
+- `deadline_ts`: Unix timestamp when trading closes
+- `grace_period_secs`: Delay before settlement is allowed
+
+### Safety Limits
+
+- `max_trade_usdc_fp`: Max USDC per trade
+- `max_position_shares_fp`: Max shares per user position
+
+### Optional Features
+
+- `treasury`: Optional account to collect fees
+- `oracle_signer`: Optional oracle to settle the market
+
+---
+
 ---

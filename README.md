@@ -189,5 +189,44 @@ All USDC values and share quantities use **6-decimal fixed-point math**.
 
 ---
 
+## 📊 Math Implementation
+
+## 📐 LMSR Cost Function 
+
+### 🎯 Cost Function
+
+The **LMSR (Logarithmic Market Scoring Rule)** is a pricing formula used in prediction markets to ensure fair and dynamic pricing of outcome shares.
+
+- The cost to buy shares depends on the **existing quantity of shares** on each side (Hit and Miss).
+- The formula ensures **liquidity and continuous prices**, avoiding sudden price jumps.
+- The cost increases as you buy more of one side, making it more expensive to push the price.
+
+### 💸 Price Calculation
+
+The **price of a share** (e.g. for "Hit") is derived by comparing the quantity of Hit and Miss shares using an exponential formula:
+
+- If more Hit shares are bought, the price of Hit increases while Miss decreases.
+- Prices are always between 0 and 1 and sum to 1, behaving like probabilities.
+- The formula makes price changes **smooth and resistant to manipulation**.
+
+### 🔄 Delta Cost (ΔC)
+
+When a user makes a trade, we compute the **difference in cost** before and after the trade:
+
+- ΔC = Cost after buying additional shares − Cost before trade
+- This delta represents the **total USDC the user pays** to acquire the new shares.
+
+### 🔍 Share Solving (Bisection Search)
+
+To figure out **how many shares** a user gets for a specific USDC amount:
+
+- The program uses a **bisection search algorithm**.
+- It finds the number of shares such that the cost to buy them exactly equals the user’s input amount.
+- This ensures **precise and fair pricing** even with complex math.
+
+---
+
+The combination of these math tools allows the AMM to offer **automated, fair, and liquid binary outcome trading** with strong resistance to price manipulation and arbitrage exploits.
+
 
 ---

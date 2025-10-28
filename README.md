@@ -108,4 +108,43 @@ Claim winnings by redeeming shares 1:1 for USDC after settlement.
 
 ---
 
+## 🧠 Data Structures
+
+### 🧾 Market Account
+
+The primary state account for each market. Stores configuration and market status.
+
+- `authority`: `Pubkey` — Market manager
+- `b_fp`: Liquidity parameter in fixed-point
+- `fee_bps`: Fee in basis points
+- `q_hit_fp`: Outstanding Hit shares (fixed-point)
+- `q_miss_fp`: Outstanding Miss shares (fixed-point)
+- `outcome`: Market result (enum: Unresolved, Hit, Miss)
+- `deadline_ts`: Trading deadline timestamp
+- `grace_period_secs`: Required delay before settlement
+- `vault`: Token account holding USDC
+- `treasury`: Optional treasury account
+- `oracle_signer`: Optional signer to settle outcome
+
+---
+
+### 👤 Position Account
+
+Per-user account to track share holdings.
+
+- `owner`: `Pubkey` — User wallet
+- `hit_shares_fp`: Fixed-point amount of Hit shares
+- `miss_shares_fp`: Fixed-point amount of Miss shares
+- PDA: Derived from `[SEED_POSITION, market, user]`
+
+---
+
+### 🎭 Enums
+
+- `Outcome`: `Unresolved | Hit | Miss`
+- `Side`: `Hit | Miss`
+
+---
+
+
 ---

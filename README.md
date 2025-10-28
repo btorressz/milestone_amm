@@ -228,5 +228,60 @@ To figure out **how many shares** a user gets for a specific USDC amount:
 
 The combination of these math tools allows the AMM to offer **automated, fair, and liquid binary outcome trading** with strong resistance to price manipulation and arbitrage exploits.
 
+---
+
+## 🧩 Dependencies
+
+- **anchor-lang**: Solana program framework  
+- **anchor-spl**: SPL token integration
+
+---
+
+## 📢 Events
+
+The program emits events for observability:
+
+- `MarketInitialized`: New market created  
+- `TradeEvent`: Buy/sell executed with pricing details  
+- `Settled`: Market outcome determined  
+- `Redeemed`: Winnings claimed  
+- `Paused`: Market paused/unpaused  
+
+---
+
+## ❗ Error Codes
+
+Key errors include:
+
+- `MathOverflow`: Arithmetic overflow  
+- `TradeTooLarge`: Exceeds max trade limit  
+- `PositionTooLarge`: Exceeds max position limit  
+- `AfterDeadline`: Trading period ended  
+- `Slippage`: Output below minimum  
+- `Unauthorized`: Permission denied  
+- `AlreadySettled`: Market already resolved  
+
+---
+
+## 🧪 Usage Example
+
+1. Initialize market with desired parameters  
+2. Optionally seed with initial liquidity  
+3. Users buy/sell shares based on milestone belief  
+4. Wait for deadline + grace period  
+5. Authority or oracle settles to Hit or Miss  
+6. Winners redeem shares for USDC  
+
+---
+
+## 📝 Notes
+
+- All token operations use **USDC (SPL token)**  
+- Vault is an **Associated Token Account (ATA)** owned by the market PDA  
+- Position accounts **auto-initialize** on the user's first trade  
+- Markets can only be **settled once**  
+- Redemption clears all shares regardless of outcome  
+
+
 
 ---
